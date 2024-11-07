@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DMSScript options="272" xmlns="http://www.skyline.be/automation">
+	<Name>SESSA_SRM_PLS_Ateme_Kyrion_DR5000_IRD</Name>
+	<Description>SESSA_PLS_Ateme_Kyrion_DR5000_IRD_1.0.0.1</Description>
+	<Type>Automation</Type>
+	<Author>SKYLINE2\BHO</Author>
+	<CheckSets>FALSE</CheckSets>
+	<Folder></Folder>
+
+	<Protocols>
+		<Protocol id="1">
+			<Description>FunctionDve</Description>
+			<Name>Ateme Kyrion DR5000.IRD (Ateme Kyrion DR5000)</Name>
+			<Version>Production</Version>
+			<DefaultElement></DefaultElement>
+		</Protocol>
+	</Protocols>
+
+	<Memory>
+	</Memory>
+
+	<Parameters>
+		<ScriptParameter id="2" type="string" values="">
+			<Description>Info</Description>
+		</ScriptParameter>
+		<ScriptParameter id="3" type="string" values="">
+			<Description>ProfileInstance</Description>
+		</ScriptParameter>
+	</Parameters>
+
+	<Script>
+		<Exe id="4" type="csharp">
+			<Value><![CDATA[[Project:SESSA_SRM_PLS_Ateme_Kyrion_DR5000_IRD_1]]]></Value>
+			<!--<Param type="debug">true</Param>-->
+			<Message></Message>
+			<Param type="ref">C:\Skyline DataMiner\Files\SLSRMLibrary.dll</Param>
+		</Exe>
+	</Script>
+</DMSScript>
