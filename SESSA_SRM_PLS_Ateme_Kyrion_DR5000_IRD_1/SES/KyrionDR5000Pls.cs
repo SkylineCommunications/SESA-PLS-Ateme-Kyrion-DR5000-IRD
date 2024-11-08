@@ -13,7 +13,7 @@
 
     public class KyrionDR5000Pls
     {
-        private const string ScriptName = "SESSA_SRM_PLS_Ateme_Kyrion_DR5000_IRD";
+        private const string ScriptName = "SESSA_SRM_PLS_Ateme_Kyrion_DR5000.IRD";
         private readonly Engine engine;
         private readonly ProfileParameterEntryHelper helper;
         private readonly Dictionary<string, SrmParameterConfiguration> srmParameters;
@@ -37,10 +37,6 @@
         }
 
         public bool HasError { get; private set; }
-
-        public void SetServiceId()
-        {
-        }
 
         public void SetInputType()
         {
@@ -74,18 +70,6 @@
                 HasError = true;
                 this.helper.LogFailure($"Exception while setting '{profileParameterName}':\n{e}");
             }
-        }
-
-        public void SetServiceName()
-        {
-        }
-
-        public void SetBissMode()
-        {
-        }
-
-        public void SetBissKey()
-        {
         }
 
         private static SrmResourceConfigurationInfo LoadResourceConfigurationInfo(IEngine engine)

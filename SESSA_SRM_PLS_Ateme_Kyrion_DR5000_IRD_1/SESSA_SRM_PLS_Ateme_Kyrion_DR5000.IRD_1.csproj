@@ -26,6 +26,6 @@
 	  </Reference>
 	</ItemGroup>
 	<ProjectExtensions>
-		<VisualStudio><UserProperties DisLinkedXmlFile="..\SESSA_SRM_PLS_Ateme_Kyrion_DR5000.IRD.xml" DisLinkId="1" DisProjectType="automationScriptProject" /></VisualStudio>
+		<VisualStudio><UserProperties DisLinkedXmlFile="..\SESSA_SRM_PLS_Ateme_Kyrion_DR5000_IRD.xml" DisLinkId="1" DisProjectType="automationScriptProject" /></VisualStudio>
 	</ProjectExtensions>
 </Project>
