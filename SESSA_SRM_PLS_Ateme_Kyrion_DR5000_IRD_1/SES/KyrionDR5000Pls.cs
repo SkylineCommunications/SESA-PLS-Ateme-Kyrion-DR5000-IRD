@@ -74,12 +74,7 @@
 
         private static SrmResourceConfigurationInfo LoadResourceConfigurationInfo(IEngine engine)
         {
-            var infoPlaceHolder = engine.GetScriptParam("Info");
-            if (infoPlaceHolder == null)
-            {
-                throw new ArgumentException("There is no input parameter named Info");
-            }
-
+            var infoPlaceHolder = engine.GetScriptParam("Info") ?? throw new ArgumentException("There is no input parameter named Info");
             try
             {
                 var resourceConfiguration = JsonConvert.DeserializeObject<SrmResourceConfigurationInfo>(infoPlaceHolder.Value);
@@ -102,12 +97,7 @@
 
         private static NodeProfileConfiguration LoadNodeProfileConfiguration(IEngine engine)
         {
-            var instancePlaceHolder = engine.GetScriptParam("ProfileInstance");
-            if (instancePlaceHolder == null)
-            {
-                throw new ArgumentException("There is no input parameter named Info");
-            }
-
+            var instancePlaceHolder = engine.GetScriptParam("ProfileInstance") ?? throw new ArgumentException("There is no input parameter named Info");
             try
             {
                 var data = JsonConvert.DeserializeObject<Dictionary<string, Guid>>(instancePlaceHolder.Value);
