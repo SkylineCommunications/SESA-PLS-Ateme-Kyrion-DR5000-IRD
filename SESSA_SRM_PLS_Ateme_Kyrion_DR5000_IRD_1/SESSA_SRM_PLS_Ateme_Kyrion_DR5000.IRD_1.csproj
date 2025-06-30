@@ -22,7 +22,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="SLSRMLibrary">
-	    <HintPath>..\..\..\..\..\Skyline DataMiner\Files\SLSRMLibrary.dll</HintPath>
+	    <HintPath>..\Dlls\SLSRMLibrary.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 	<ProjectExtensions>
