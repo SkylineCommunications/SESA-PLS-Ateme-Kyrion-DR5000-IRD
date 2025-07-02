@@ -37,16 +37,16 @@ jobs:
     name: CD
     runs-on: ubuntu-latest
     needs: CI
-
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Skyline DataMiner Deploy Action
-        uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@v1
-        with:
-          # Stage deploy
-          stage: Deploy
-          # The API-key: generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System.
-          api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
-          # Id of the uploaded artifact
-          artifact-id: ${{ needs.CI.outputs.artifact-id }}
+       - name: Skyline DataMiner Deploy Action
+         uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@v1
+         with:
+           # Stage deploy
+           stage: All
+           # The API-key: generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System.
+           api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
+           solution-path: ./AutomationScript.sln
+           artifact-name: ${{ github.repository }} ${{ github.ref_name }}
+           # Id of the uploaded artifact
+           artifact-id: ${{ needs.CI.outputs.artifact-id }}
+           version: ${{ github.ref_name }}
