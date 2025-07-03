@@ -41,4 +41,4 @@ jobs:
 
        - name: Check Output
          run: |
-           echo "${{ steps.UploadDMPROTOCOL.outputs.uploadOutput }}"
+           echo "${{ steps.UploadDMAPP.outputs.uploadOutput }}"
