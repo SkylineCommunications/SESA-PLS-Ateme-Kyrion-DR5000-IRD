@@ -25,26 +25,20 @@ jobs:
     steps:
        - uses: actions/checkout@v3
 
-       - name: Skyline DataMiner Deploy Action Development
-         if: github.ref_type == 'branch'
-         uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@v1
-         with:
-           # Stage deploy
-           stage: All
-           # The API-key: generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System.
-           api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
-           solution-path: ./AutomationScript.sln
-           artifact-name: ${{ github.repository }} ${{ github.ref_name }}_B${{ github.run_number }}
-           build-number: ${{ github.run_number }}
-           
-       - name: Skyline DataMiner Deploy Action Release
-         if: github.ref_type == 'tag'
-         uses: SkylineCommunications/Skyline-DataMiner-Deploy-Action@v1
-         with:
-           # Stage deploy
-           stage: All
-           # The API-key: generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System.
-           api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
-           solution-path: ./AutomationScript.sln
-           artifact-name: ${{ github.repository }} ${{ github.ref_name }}
-           version: ${{ github.ref_name }}
+       - name: InstallPackageCreation
+         run: dotnet tool install -g Skyline.DataMiner.CICD.Tools.Packager
+       - name: Install Catalog Upload
+         run: dotnet tool install -g Skyline.DataMiner.CICD.Tools.CatalogUpload
+
+       - name: Create DMPROTOCOL
+         run: dataminer-package-create dmapp ${{ github.workspace }} --name tmp.dmapp --output ${{ github.workspace }}
+
+       - name: Upload DMAPP
+         id: UploadDMAPP
+         run: |
+           echo "uploadOutput=$(dataminer-catalog-upload --path-to-artifact "${{ github.workspace }}/tmp.dmapp" --dm-catalog-token ${{ secrets.DATAMINER_DEPLOY_KEY }})" >> $GITHUB_OUTPUT
+         shell: bash
+
+       - name: Check Output
+         run: |
+           echo "${{ steps.UploadDMPROTOCOL.outputs.uploadOutput }}"
